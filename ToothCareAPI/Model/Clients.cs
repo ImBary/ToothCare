@@ -19,7 +19,7 @@ namespace ToothCareAPI.Model
         [Required]
         [EmailAddress]
         public string Email { get; set; }
-        public ICollection<Appointments> Appointments { get; set; }
+        public virtual ICollection<Appointments> Appointments { get; set; }
 
     }
 }

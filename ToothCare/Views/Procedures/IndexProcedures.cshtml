@@ -1,0 +1,62 @@
+﻿@model ToothCare.Models.ViewModel<ProceduresDTO>
+
+
+
+
+
+<div class="container">
+    <div class="row text-center mb-4">
+        <h1>Page @Model.pagination.PageNumber</h1>
+    </div>
+
+    <div class="row align-items-center mb-3">
+        <!-- Previous Page Link -->
+        <div class="col-2 text-start">
+            @if (Model.pagination.PageNumber > 1)
+            {
+                <a class="btn btn-primary" asp-action="IndexProcedures" asp-route-pageNumber="@(Model.pagination.PageNumber - 1)">Prev</a>
+            }
+            else
+            {
+                <a class="btn btn-secondary disabled" href="#">Prev</a>
+            }
+        </div>
+
+        <!-- Procedure Squares -->
+        <div class="col-8">
+            <div class="row">
+                @foreach (var item in Model.lists)
+                {
+                    <div class="col-md-4 mb-4">
+                        <div class="square bg-dark p-5 text-bg-danger">
+                            <h3 class="text-light">@item.Name</h3>
+                            <p class="text-light">Cost: @item.Price</p>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+
+        <!-- Next Page Link -->
+        <div class="col-2 text-end">
+            @if (Model.pagination.PageNumber < Model.pagination.TotalPages)
+            {
+                <a class="btn btn-primary" asp-action="IndexProcedures" asp-route-pageNumber="@(Model.pagination.PageNumber + 1)">Next</a>
+            }
+            else
+            {
+                <a class="btn btn-secondary disabled" href="#">Next</a>
+            }
+        </div>
+    </div>
+</div>
+
+<style>
+    .square {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+</style>

@@ -43,7 +43,7 @@ namespace ToothCareAPI.Data
             builder.Entity<Clients>(entity =>
             {
                 entity.HasKey(e => e.Id);
-                entity.HasIndex(e => e.Email).IsUnique();
+                
                 entity.HasIndex(e => e.Pesel).IsUnique();
 
                 entity.HasMany(c => c.Appointments)
